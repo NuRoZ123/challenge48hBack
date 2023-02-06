@@ -21,5 +21,13 @@ export const database = {
 
     closeConnexion: (connexion) => {
         connexion.end();
+    },
+
+    createTransaction: (connexion) => {
+        connexion.beginTransaction();
+    },
+
+    commitTransaction: (connexion) => {
+        connexion.commit();
     }
 }

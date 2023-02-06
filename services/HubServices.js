@@ -7,5 +7,13 @@ export const HubServices = {
         let result = await connexion.awaitQuery(sql);
         database.closeConnexion(connexion);
         return result;
+    },
+
+    getByIp: async (ip) => {
+        let connexion = database.createConnexionHub();
+        let sql = `select * from Instance where ip = "${ip}"`;
+        let result = await connexion.awaitQuery(sql);
+        database.closeConnexion(connexion);
+        return result[0];
     }
 }

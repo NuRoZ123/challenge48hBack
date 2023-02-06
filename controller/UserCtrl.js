@@ -40,13 +40,13 @@ export const UserCtrl = {
 
     login: async (ctx) => {
         try {
-            const loginValidationSchema = new Joi.object({
+            const registerValidationSchema = new Joi.object({
                 email: Joi.string().email().required(),
                 password: Joi.string().min(6).required()
             });
 
             const params = ctx.request.body;
-            const { error, value } = loginValidationSchema.validate(params);
+            const { error, value } = registerValidationSchema.validate(params);
             if(error) throw new Error(error);
 
             let user = await UserServices.getUser(params.email);

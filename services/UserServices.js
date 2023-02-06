@@ -31,5 +31,13 @@ export const UserServices = {
         let response = await connexion.awaitQuery(sql);
         database.closeConnexion(connexion);
         return response[0];
+    },
+
+    getById: async (id) => {
+        let connexion = database.createConnexionInstance();
+        let sql = `select * from Utilisateurs where id = ${id}`;
+        let response = await connexion.awaitQuery(sql);
+        database.closeConnexion(connexion);
+        return response[0];
     }
 }
