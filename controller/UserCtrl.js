@@ -2,6 +2,7 @@ import Joi from "joi";
 import argon2 from "argon2";
 import {UserServices} from "../services/UserServices.js";
 import jwt from "jsonwebtoken";
+import {HubServices} from "../services/HubServices.js";
 
 export const UserCtrl = {
     generateJWT: (userId) => {
@@ -63,5 +64,8 @@ export const UserCtrl = {
         } catch (e) {
             ctx.badRequest({message: e.message})
         }
+    },
+    info: async (ctx) => {
+        ctx.ok({utilisateur: {id: ctx.state.user.id, instance: (await HubServices.getByIp(process.env.ip))["id"]}});
     }
 };
