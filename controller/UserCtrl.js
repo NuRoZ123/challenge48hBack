@@ -40,13 +40,13 @@ export const UserCtrl = {
 
     login: async (ctx) => {
         try {
-            const registerValidationSchema = new Joi.object({
+            const loginValidationSchema = new Joi.object({
                 email: Joi.string().email().required(),
                 password: Joi.string().min(6).required()
             });
 
             const params = ctx.request.body;
-            const { error, value } = registerValidationSchema.validate(params);
+            const { error, value } = loginValidationSchema.validate(params);
             if(error) throw new Error(error);
 
             let user = await UserServices.getUser(params.email);
@@ -59,7 +59,6 @@ export const UserCtrl = {
                 throw new Error("Identifiant ou mot de passe incorrect");
             }
 
-            console.log(user["id"])
             ctx.ok(UserCtrl.generateJWT(user["id"]));
         } catch (e) {
             ctx.badRequest({message: e.message})
