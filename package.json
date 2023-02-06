@@ -1,0 +1,30 @@
+{
+  "name": "48hback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon -r dotenv/config index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NuRoZ123/challenge48hBack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NuRoZ123/challenge48hBack/issues"
+  },
+  "homepage": "https://github.com/NuRoZ123/challenge48hBack#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "koa": "^2.14.1",
+    "koa-respond": "^2.1.0",
+    "koa-bodyparser": "^4.3.0",
+    "@koa/cors": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
